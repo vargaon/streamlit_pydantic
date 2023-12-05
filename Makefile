@@ -1,3 +1,7 @@
+.PHONY: install
+install:
+	poetry config virtualenvs.create true && poetry config virtualenvs.in-project true && poetry install --no-interaction --no-ansi
+
 .PHONY: run
 run:
-	streamlit run home.py
+	poetry run streamlit run examples/1_🏠_Home.py
