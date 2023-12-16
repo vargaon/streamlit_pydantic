@@ -54,7 +54,7 @@ def generate_form(
 - ### Datetime
 - ### List
     - **max_length**: sets maximum number of list elements
-- ### Dict[Str, Bool | Int | Float | Str | Date | Time | Datetime | Color]
+- ### Dict
     - **max_length**: sets maximum number of key-value pairs
 - ### Color
 
