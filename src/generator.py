@@ -15,6 +15,20 @@ def generate_form(
     submit_btn_label: str = "Submit",
     show_form_label: bool = True,
 ) -> BaseModel | None:
+    """Generates a form according to the Pydantic model, if the form is submitted it returns an instance of the model.
+
+    :param model: Pydantic model or its instances
+    :type model: BaseModel | type[BaseModel]
+    :param form_label: Form label, defaults to None
+    :type form_label: str | None, optional
+    :param submit_btn_label: Submit button label, defaults to "Submit"
+    :type submit_btn_label: str, optional
+    :param show_form_label: If True, show form label, defaults to True
+    :type show_form_label: bool, optional
+    :return: Pydantic model instance
+    :rtype: BaseModel | None
+    """
+
     schema = Schema(**model.model_json_schema(ref_template="{model}"))
     prop_keys = []
 
@@ -31,7 +45,7 @@ def generate_form(
     if show_form_label:
         st.header(form_label if form_label is not None else schema.title)
 
-    with nested_container(key=f"demo_form"):
+    with nested_container(key=f"nested_form"):
         c1 = st.columns(1)
         with c1[0]:
             values = _generate_input(
